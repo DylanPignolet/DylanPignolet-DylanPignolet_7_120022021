@@ -5,18 +5,18 @@
         <v-toolbar-side-icon id="logo">      
             <img src="@/assets/icon-left-font-monochrome-white.png" height="250px">
         </v-toolbar-side-icon>
-        <v-toolbar-title class="title">daz</v-toolbar-title>
+        <v-toolbar-title class="title">d</v-toolbar-title>
 
         <v-spacer></v-spacer>
 
         <v-toolbar-items>  
-            <v-btn color="white" text>
+            <router-link to="/Login" class="button">
                 Log in
-            </v-btn>
+            </router-link>
 
-            <v-btn color="white" text>
+            <router-link to="/Signup" class="button">
                 Sign up
-            </v-btn>
+            </router-link>
         </v-toolbar-items>
         </v-toolbar>
     </v-container>
@@ -48,5 +48,37 @@ export default {
 
 .title {
     color: #091F43;
+}
+
+.button {
+    height: 36px;
+    min-width: 64px;
+    padding: 0 16px;
+    border-radius: 0;
+    height: 100% !important;
+    max-height: none;
+    font-size: 0.875rem;
+    color: white !important;
+    align-items: center;
+    border-radius: 4px;
+    display: inline-flex;
+    flex: 0 0 auto;
+    font-weight: 500;
+    letter-spacing: 0.0892857143em;
+    justify-content: center;
+    outline: 0;
+    position: relative;
+    text-decoration: none;
+    text-indent: 0.0892857143em;
+    text-transform: uppercase;
+    transition-duration: 0.28s;
+    transition-property: box-shadow, transform, opacity;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
 }
 </style>
