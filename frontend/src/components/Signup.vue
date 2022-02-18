@@ -1,3 +1,5 @@
 <template>
-    <div>azdzada</div>
+    <div>
+        Bienvenue dans la partie inscription
+    </div>
 </template>

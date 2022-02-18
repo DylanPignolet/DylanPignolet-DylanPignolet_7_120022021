@@ -1,26 +1,15 @@
 <template>
-  <v-app>
-    <v-app-bar 
-      app 
-      flat
-    >
-      <Header />
-    </v-app-bar>
-
-
-  </v-app>
+  <div class="signup">
+    <Signup />
+  </div>
 </template>
 
 <script>
-import Header from "../components/Header.vue";
+
+import Signup from '../components/Signup.vue';
+
 
 export default {
-  name: "App",
-  components: {
-    Header,
-  },
-  data: () => ({
-    //
-  })
+  components: { Signup },
 };
 </script>

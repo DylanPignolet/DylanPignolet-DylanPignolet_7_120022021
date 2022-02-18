@@ -1,6 +1,31 @@
 <template>
+<v-app>
+    <v-app-bar 
+      app 
+      flat
+    >
+      <Header />
+      <Home/>
+    </v-app-bar>
     <router-view/>
+    </v-app>
 </template>
+
+<script>
+import Header from "./components/Header.vue";
+import Home from "./views/Home.vue"
+
+export default {
+  name: "App",
+  components: {
+    Header,
+    Home,
+  },
+  data: () => ({
+    //
+  })
+};
+</script>
 
 <style lang="scss">
 #app {
@@ -24,3 +49,4 @@
   }
 }
 </style>
+

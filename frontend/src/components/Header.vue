@@ -1,20 +1,19 @@
 <template>
     <v-container fluid>
         <v-toolbar color=#091F43 flat>
-
-        <v-toolbar-side-icon id="logo">      
+     
             <img src="@/assets/icon-left-font-monochrome-white.png" height="250px">
-        </v-toolbar-side-icon>
+        
         <v-toolbar-title class="title">d</v-toolbar-title>
 
         <v-spacer></v-spacer>
 
         <v-toolbar-items>  
-            <router-link to="/Login" class="button">
+            <router-link to="/login" class="button">
                 Log in
             </router-link>
 
-            <router-link to="/Signup" class="button">
+            <router-link to="/signup" class="button">
                 Sign up
             </router-link>
         </v-toolbar-items>
@@ -80,5 +79,9 @@ export default {
     user-select: none;
     vertical-align: middle;
     white-space: nowrap;
+}
+
+img {
+    margin-left: 10px;
 }
 </style>

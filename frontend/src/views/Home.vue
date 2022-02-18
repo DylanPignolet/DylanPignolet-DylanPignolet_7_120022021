@@ -1,24 +1,10 @@
 <template>
-  <v-app>
-    <v-app-bar 
-      app 
-      flat
-    >
-      <Header />
-    </v-app-bar>
-  </v-app>
+  <section>
+    <div>
+      Bienvenue sur le réseau Groupomania !
+    </div>
+    <div>
+      Venez discuter avec vos collègues du groupe Groupomania !
+    </div>
+  </section>
 </template>
-
-<script>
-import Header from "../components/Header.vue";
-
-export default {
-  name: "App",
-  components: {
-    Header,
-  },
-  data: () => ({
-    //
-  })
-};
-</script>
