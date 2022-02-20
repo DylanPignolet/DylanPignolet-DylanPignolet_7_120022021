@@ -1,15 +1,17 @@
 <template>
     <v-container fluid>
         <v-toolbar color=#091F43 flat>
-     
-            <img src="@/assets/icon-left-font-monochrome-white.png" height="250px">
-        
+            <router-link to="/" class="home">
+                <v-app-bar-nav-icon id="logo">      
+                    <img src="@/assets/icon-left-font-monochrome-white.png" height="250px">
+                </v-app-bar-nav-icon>
+            </router-link>
         <v-toolbar-title class="title">d</v-toolbar-title>
 
         <v-spacer></v-spacer>
 
         <v-toolbar-items>  
-            <router-link to="/login" class="button">
+            <router-link to="/" class="button">
                 Log in
             </router-link>
 
@@ -24,7 +26,6 @@
 <script>
 export default {
     name: 'Header',
-
     data: () => ({        
     }),
 };
@@ -32,23 +33,19 @@ export default {
 
 <style>
 #logo {
-    margin-top: 10px;
-    margin-left: 20px;
+    margin-top: 10px !important;
+    margin-left: 20px !important;
 }
-
 .v-toolbar__content {
     margin: 0;
     padding: 0 !important;
 }
-
 .container {
     padding: 0 !important;
 }
-
 .title {
     color: #091F43;
 }
-
 .button {
     height: 36px;
     min-width: 64px;
@@ -56,7 +53,7 @@ export default {
     border-radius: 0;
     height: 100% !important;
     max-height: none;
-    font-size: 0.875rem;
+    font-size: 1rem;
     color: white !important;
     align-items: center;
     border-radius: 4px;
@@ -80,8 +77,8 @@ export default {
     vertical-align: middle;
     white-space: nowrap;
 }
-
 img {
-    margin-left: 10px;
+    margin-left: 200px;
+    margin-top: -10px;
 }
 </style>

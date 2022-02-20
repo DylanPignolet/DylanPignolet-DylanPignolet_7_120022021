@@ -16,5 +16,3 @@ const userModel = sequelize.define('user', {
 
 exports.userModel = userModel
 
-userModel.plugin(uniqueValidator);
-

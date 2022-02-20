@@ -1,25 +1,27 @@
 <template>
-<v-app>
-    <v-app-bar 
-      app 
-      flat
-    >
-      <Header />
-      <Home/>
-    </v-app-bar>
-    <router-view/>
-    </v-app>
+  <div>
+      <v-app>
+      <v-app-bar flat max-height="65">
+        <Header />
+      </v-app-bar>
+      <div>
+        <router-view/>
+      </div>
+      </v-app>
+      <v-footer>
+        <Footer/>
+      </v-footer>
+  </div>
 </template>
 
 <script>
-import Header from "./components/Header.vue";
-import Home from "./views/Home.vue"
-
+import Header from "./components/HeaderComponent.vue";
+import Footer from "./components/FooterComponent.vue";
 export default {
   name: "App",
   components: {
     Header,
-    Home,
+    Footer,
   },
   data: () => ({
     //
