@@ -11,7 +11,7 @@ try {
     console.error('Impossible de se connecter, erreur suivante :', error);
   }
 
-const userModel = sequelize.define('user', {
+const User = sequelize.define('user', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     lastname: { type: DataTypes.STRING(100), allowNull: false },
     firstname: { type: DataTypes.STRING(100), allowNull: false },
@@ -20,5 +20,5 @@ const userModel = sequelize.define('user', {
     imageUrl: { type: DataTypes.STRING, allowNull: true },
 })
 
-exports.userModel = userModel
+exports.User = User
 
