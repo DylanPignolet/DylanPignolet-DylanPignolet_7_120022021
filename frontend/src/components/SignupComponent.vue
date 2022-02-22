@@ -4,38 +4,28 @@
             <div class="welcome">
                 Bienvenue sur la page d'inscription du réseau Groupomania !
             </div>
-            <form @submit.prevent="onSubmit">
+            <v-form @submit.prevent="signup" v-model="valid" class="form">
                 <div>
-                    <label for="name">Nom</label>
-                        <br>
-                        <input v-model="name" id="name" placeholder="nom" type="text" class="form">
-                        <div class="error" v-if="error">Veuillez renseigner votre nom</div>                                        
+                    <v-text-field :rules='rules' label="Nom" dark clearable required v-model="name" id="name" placeholder="nom" type="text" class="form" />                                     
                 </div>
                 <div>
-                    <label for="firstName">Prénom</label>
-                    <br>
-                    <input v-model="firstName" id="firstName" placeholder="prénom" type="text" class="form" >
-                    <div class="error" v-if="error">Veuillez remplir le champ convenablement.</div>                                        
+                    <v-text-field :rules='rules' label="Prénom" dark clearable required v-model="firstName" id="firstName" placeholder="prénom" type="text" class="form" />                                
                 </div>          
                 <div>
-                    <label for="email">E-mail</label>
-                    <br>
-                    <input v-model="email" id="email" placeholder="email" type="email" class="form">
-                    <div class="error" v-if="error">Veuillez remplir le champ convenablement.</div>                                        
+                    <v-text-field :rules='rules' label="email" dark clearable required v-model="email" id="email" placeholder="email" type="email" class="form" />                                       
                 </div>    
                 <div>
-                    <label for="password">Mot de passe</label>
-                    <br>
-                    <input v-model="password" id="password" placeholder="mot de passe" type="password" class="form">
-                    <div class="error" v-if="error">Veuillez remplir le champ convenablement.</div>                                        
+                    <v-text-field :rules='rules' label="mot de passe" dark clearable required v-model="password" id="password" placeholder="mot de passe" type="password" class="form" />                                       
                 </div>
                 <div>
-                    <v-btn elevation="3" color=white class="loginBtn">S'inscrire</v-btn>
+                    <v-btn @click="signup" :disabled="!valid" dark elevation="3" color=white class="loginBtn">
+                        S'inscrire
+                    </v-btn>
                     <div class="alreadySigned">
                         Vous avez déjà un compte ?
                     </div>
                 </div>
-            </form>
+            </v-form>
             <div class="connectDiv">
                 <router-link to="/" class="connect">
                     Connectez-vous
@@ -46,6 +36,9 @@
 </template>
 
 <script>
+import axios from 'axios'
+axios.defaults.baseURL = 'http://localhost:3000/api/'
+
 export default {
     name: 'Signup',
     data(){
@@ -54,12 +47,39 @@ export default {
             firstName:'',
             email:'',
             password:'',
+            valid: true,
+            rules: [
+                value => !!value  || 'Champs obligatoire',
+                value => (value || '').length <= 50 || '50 charactères max',
+            ],
         }           
     },
+    methods: {
+        signup: function() {
+            
+            let user = {
+                lastname: this.name,
+                firstname: this.firstName,
+                email: this.email,
+                password: this.password,
+            }
+
+        axios.post('auth/signup', user)
+        .then((response) => {
+            console.log(response)
+        }) 
+        }
+    }
 };
 </script>
 
 <style>
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .welcome {
     margin: 40px 0;
@@ -67,9 +87,15 @@ export default {
     font-size: 1.5rem;
 }
 
-input {
+#name, #firstName, #email, #password {
     border-style: ridge;
     margin-bottom: 15px;
+}
+
+
+
+.error--text {
+    margin-left: 10px;
 }
 
 .signupBtn {

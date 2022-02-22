@@ -4,6 +4,12 @@ const sequelize = new Sequelize("groupomania", "root", "33302764Aa8ec78db", {
     dialect: "mysql",
     host: "localhost"
 });
+try {
+    sequelize.authenticate();
+    console.log('Connecté à la base de données MySQL!');
+  } catch (error) {
+    console.error('Impossible de se connecter, erreur suivante :', error);
+  }
 
 const userModel = sequelize.define('user', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
@@ -11,7 +17,7 @@ const userModel = sequelize.define('user', {
     firstname: { type: DataTypes.STRING(100), allowNull: false },
     email: { type: DataTypes.STRING(100), allowNull: false, unique: true },
     password: { type: DataTypes.STRING(200), allowNull: false },
-    imageUrl: { type: DataTypes.STRING },
+    imageUrl: { type: DataTypes.STRING, allowNull: true },
 })
 
 exports.userModel = userModel
