@@ -12,11 +12,15 @@
 
         <v-toolbar-items>  
             <router-link to="/" class="button">
-                Log in
+                Log out
             </router-link>
 
-            <router-link to="/signup" class="button">
-                Sign up
+            <router-link to="/profil" class="button">
+                Profil
+            </router-link>
+
+            <router-link to="/feed" class="button">
+                Home
             </router-link>
         </v-toolbar-items>
         </v-toolbar>
@@ -25,7 +29,7 @@
 
 <script>
 export default {
-    name: 'Header',
+    name: 'HeaderIn',
     data: () => ({        
     }),
 };
@@ -80,9 +84,5 @@ export default {
 img {
     margin-left: 200px;
     margin-top: -10px;
-}
-
-.v-application--wrap {
-    min-height: 0 !important;
 }
 </style>

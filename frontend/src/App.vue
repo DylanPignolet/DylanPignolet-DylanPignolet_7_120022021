@@ -1,13 +1,8 @@
 <template>
   <div>
-      <v-app>
-      <v-app-bar flat max-height="65">
-        <Header />
-      </v-app-bar>
       <div>
         <router-view/>
       </div>
-      </v-app>
       <v-footer>
         <Footer/>
       </v-footer>
@@ -15,13 +10,11 @@
 </template>
 
 <script>
-import Header from "./components/HeaderComponent.vue";
 import Footer from "./components/FooterComponent.vue";
 export default {
   name: "App",
   components: {
-    Header,
-    Footer,
+    Footer
   },
   data: () => ({
     //
