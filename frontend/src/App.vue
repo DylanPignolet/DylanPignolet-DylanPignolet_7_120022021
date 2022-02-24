@@ -1,11 +1,13 @@
 <template>
   <div>
-      <div>
-        <router-view/>
-      </div>
-      <v-footer>
-        <Footer/>
-      </v-footer>
+    <div>
+        <div>
+          <router-view/>
+        </div>
+    </div>
+    <v-footer>
+          <Footer/>
+    </v-footer>
   </div>
 </template>
 
@@ -42,6 +44,18 @@ export default {
       color: #42b983;
     }
   }
+}
+
+.v-footer {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+}
+
+footer {
+  width: 100%;
+  height: 100px;
 }
 </style>
 

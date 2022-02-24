@@ -64,6 +64,8 @@ export default {
       display: flex;
       justify-content: center;
       color: white !important;
+      position: relative;
+      right: 60px;
   }
 
   .pt-0 {
