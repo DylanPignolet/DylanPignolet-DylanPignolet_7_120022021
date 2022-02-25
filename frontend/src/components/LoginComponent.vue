@@ -12,10 +12,10 @@
             </div>
             <v-form @submit.prevent="login" v-model="valid" class="form">
                 <div>
-                    <v-text-field :rules='rules' label="email" dark clearable required v-model="email" id="email" placeholder="email" type="email" class="form" />                                       
+                    <v-text-field :rules='rules' label="email" dark clearable required v-model.trim="user.email" id="email" placeholder="email" type="email" class="form" />                                       
                 </div>    
                 <div>
-                    <v-text-field :rules='rules' label="mot de passe" dark clearable required v-model="password" id="password" placeholder="mot de passe" type="password" class="form" />                                       
+                    <v-text-field :rules='rules' label="mot de passe" dark clearable required v-model.trim="user.password" id="password" placeholder="mot de passe" type="password" class="form" />                                       
                 </div>
                 <div class="logBtn">
                     <v-btn @click="login" :disabled="!valid" dark elevation="3" color=white class="loginBtn">
@@ -48,8 +48,10 @@ export default {
     },
     data(){
         return{
-            email:'',
-            password:'',
+            user: {
+                email:'',
+                password:'',
+            },
             valid: true,
             rules: [
                 value => !!value  || 'Champs obligatoire',
@@ -61,13 +63,14 @@ export default {
         login: function() {
             
             let user = {
-                email: this.email,
-                password: this.password,
+                email: this.user.email,
+                password: this.user.password,
             }
-            console.log(user)
             axios.post('auth/login', user)
                 .then((response) => {console.log(response)
                     if(response.status == 200){
+                        localStorage.setItem('userInfo', JSON.stringify(response.data.user))
+                        localStorage.setItem('token', response.data.token)
                         this.$router.push('feed')
                     }
                     else{

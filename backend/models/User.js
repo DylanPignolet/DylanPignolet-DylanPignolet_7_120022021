@@ -22,5 +22,6 @@ const User = sequelize.define('user', {
   timestamps: true, createdAt: 'created', updatedAt: false, underscored: true
 })
 
+
 exports.User = User
 
