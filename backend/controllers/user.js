@@ -54,3 +54,24 @@ exports.login = (req, res, next) => {
   .catch(error => res.status(500).json({ error }));
   })
 };
+
+exports.getOneUser = (req, res, next) => {
+  model.User.findOne({
+     where: { id : req.params.id }
+  })
+  .then(user => res.status(200).json(user))
+  .catch(error => res.status(400).json({error}))
+}
+
+exports.updateLastName = (req,res,next) => {
+  model.User.update({
+      lastname: req.body.lastname,
+  },
+  {
+      where:{
+          id:req.params.id
+      }
+  })
+  .then(user => res.status(200).json(user))
+  .catch(error => res.status(400).json({error}))
+}

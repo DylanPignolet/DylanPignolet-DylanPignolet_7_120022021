@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/HomeView.vue'
 import Signup from '../views/SignupView.vue'
 import Feed from '../views/FeedView.vue'
-import Profil from '../views/ProfilView.vue'
+import Profile from '../views/ProfileView.vue'
 
 
 Vue.use(VueRouter)
@@ -25,9 +25,9 @@ const routes = [
     component: Feed
   },
   {
-    path:'/profil',
-    name: 'Profil',
-    component: Profil
+    path:'/profile',
+    name: 'Profile',
+    component: Profile
   }
   ]
 

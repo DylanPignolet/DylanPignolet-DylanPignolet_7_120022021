@@ -7,7 +7,7 @@
             color=#091F43
             class="text-center icon"
             >
-            <v-card-text>
+            <v-card-text class="footerText">
                 <v-btn
                 v-for="icon in icons"
                 :key="icon"
@@ -26,7 +26,7 @@
 
             <v-divider></v-divider>
 
-            <v-card-text class="groupomania">
+            <v-card-text class="groupomania footerText">
                 {{ new Date().getFullYear() }} — <strong>Groupomania</strong>
             </v-card-text>
          </v-card>
@@ -58,7 +58,7 @@ export default {
   background: #091F43 !important;
     }
 
-  .v-card__text {
+  .footerText {
      
       padding: 0 !important;
       display: flex;

@@ -15,7 +15,7 @@
                 Log out
             </router-link>
 
-            <router-link to="/profil" class="button">
+            <router-link to="/profile" class="button">
                 Profil
             </router-link>
 
