@@ -38,7 +38,7 @@
                     </v-chip>
                     <div v-if="firstnameInput == true">
                         <input v-model.trim="firstname" id="firstname" placeholder="Nouveau prénom" type="text">
-                        <v-btn tile dark color=#091F43 class="modify">
+                        <v-btn tile dark color=#091F43 @click="updateFirstName" class="modify">
                             Modifier
                         </v-btn>
                     </div>
@@ -57,7 +57,7 @@
                     </v-chip>
                     <div v-if="emailInput == true">
                         <input v-model.trim="email" id="email" placeholder="Nouvel email" type="email">
-                        <v-btn tile dark color=#091F43 class="modify">
+                        <v-btn tile dark color=#091F43 @click="updateEmail" class="modify">
                             Modifier
                         </v-btn>
                     </div>
@@ -164,7 +164,21 @@ export default {
             window.location.reload()
         })
     },
-    },
+        updateFirstName(){
+            axios.put('auth/users/' + JSON.parse(localStorage.getItem('userInfo')).id  + '/firstname', { firstname: this.firstname}, {headers:{'Authorization': 'Bearer '  + localStorage.getItem('token')}})
+            .then((res) =>{
+                console.log(res)
+                window.location.reload()
+            })
+        },
+        updateEmail(){
+                axios.put('auth/users/' + JSON.parse(localStorage.getItem('userInfo')).id  + '/email', { email: this.email}, {headers:{'Authorization': 'Bearer '  + localStorage.getItem('token')}})
+                .then((res) =>{
+                    console.log(res)
+                    window.location.reload()
+                })
+            }
+        },
     beforeMount(){
         this.getProfile()
     }

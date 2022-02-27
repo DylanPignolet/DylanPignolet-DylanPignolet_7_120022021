@@ -75,3 +75,28 @@ exports.updateLastName = (req,res,next) => {
   .then(user => res.status(200).json(user))
   .catch(error => res.status(400).json({error}))
 }
+
+exports.updateFirstName = (req,res,next) => {
+  model.User.update({
+      firstname: req.body.firstname,
+  },
+  {
+      where:{
+          id:req.params.id
+      }
+  })
+  .then(user => res.status(200).json(user))
+  .catch(error => res.status(400).json({error}))
+}
+exports.updateEmail = (req,res,next) => {
+  model.User.update({
+      email: req.body.email,
+  },
+  {
+      where:{
+          id:req.params.id
+      }
+  })
+  .then(user => res.status(200).json(user))
+  .catch(error => res.status(400).json({error}))
+}
