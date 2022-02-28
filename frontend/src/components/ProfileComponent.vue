@@ -89,6 +89,16 @@
                         Nombre de posts
                     </v-chip>
                 </div>
+                <div class="text-center">
+                    <v-chip class="ma-2" color=#091F43 dark>
+                        <div class="infoChip">
+                            <div>
+                            Supprimer le compte
+                            </div>
+                            <button @click="deleteAccount" class="modifBtn"><v-icon class="deleteIcon">mdi-delete-forever</v-icon></button>
+                        </div>
+                    </v-chip>
+                </div>
             </v-card-text>
             <v-card-actions class="newPost">
                 <div class="text-center">
@@ -132,6 +142,14 @@ export default {
         postView() {
         this.$router.push('feed');
     },
+    deleteAccount(){
+            axios.delete('auth/users/' + JSON.parse(localStorage.getItem('userInfo')).id, {headers:{'Authorization': 'Bearer '  + localStorage.getItem('token')}} )
+            .then(response => {
+                console.log(response)
+                localStorage.clear()
+                this.$router.push('signup')
+            })
+        },
     showLastNameInput() {
         this.lastnameInput = true
     },
@@ -187,6 +205,10 @@ export default {
 
 <style>
 
+.text-center {
+    margin: 5px 0
+}
+
 .modify {
     font-size: 0.7rem !important;
     height: 26px !important;
@@ -196,6 +218,11 @@ export default {
 .modifIcon {
     font-size: 15px !important;
     margin-left: 15px;
+}
+
+.deleteIcon {
+    font-size: 20px !important;
+    margin-left: 10px;
 }
 
 .infoChip {

@@ -88,6 +88,7 @@ exports.updateFirstName = (req,res,next) => {
   .then(user => res.status(200).json(user))
   .catch(error => res.status(400).json({error}))
 }
+
 exports.updateEmail = (req,res,next) => {
   model.User.update({
       email: req.body.email,
@@ -99,4 +100,15 @@ exports.updateEmail = (req,res,next) => {
   })
   .then(user => res.status(200).json(user))
   .catch(error => res.status(400).json({error}))
+}
+
+exports.deleteAccount = (req, res, next) => {
+  model.User.destroy({
+      where:{
+          id: req.params.id
+      }  
+  })
+  .then(() => res.status(200).json({ message: 'Compte supprimé !'}))
+  .catch(error => res.status(400).json({ error }));
+  
 }

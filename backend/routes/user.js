@@ -9,5 +9,6 @@ router.get('/users/:id',auth, userCtrl.getOneUser)
 router.put('/users/:id/lastname', auth, userCtrl.updateLastName)
 router.put('/users/:id/firstname', auth, userCtrl.updateFirstName)
 router.put('/users/:id/email', auth, userCtrl.updateEmail)
+router.delete('/users/:id', auth, userCtrl.deleteAccount)
 
 module.exports = router;
