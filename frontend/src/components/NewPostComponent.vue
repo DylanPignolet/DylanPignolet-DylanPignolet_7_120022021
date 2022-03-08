@@ -6,7 +6,7 @@
             </v-app-bar>
         </v-app>
         <v-row class="rowCenter">
-            <v-col cols="4" class="newPost">
+            <v-col  sm="6" md="4" lg="4" xl="4" class="newPost">
                 <form @submit.prevent="createPost" class="createPost">
                     <v-row>
                         <v-col cols="12">
@@ -24,7 +24,7 @@
                         </v-col>
                     </v-row>
                     <v-row class="rowBtn">
-                        <v-col cols="3">
+                        <v-col cols="3" class="colSend">
                             <v-btn @click="createPost" dark tile color=#091F43>
                                 <v-icon right>
                                     mdi-send
@@ -131,5 +131,11 @@ export default {
 .rowBtn {
     justify-content: flex-end;
 }
+
+.colSend {
+    max-width: 100%
+}
+
+
 
 </style>

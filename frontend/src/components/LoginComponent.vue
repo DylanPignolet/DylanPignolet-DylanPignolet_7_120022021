@@ -8,8 +8,8 @@
         <v-row class="loginBody">
             <v-col cols="6" class="blocLogin">
                 <v-row class="welcomeLogin">
-                    <v-col cols="12">
-                    Bienvenue sur la page de connexion du réseau Groupomania.
+                    <v-col cols="12" class="welcomeText">
+                        Bienvenue sur la page de connexion du réseau Groupomania.
                     </v-col>
                 </v-row>
                 <v-form @submit.prevent="login" v-model="valid" class="form">
@@ -159,6 +159,10 @@ input::placeholder {
 
 .theme--dark.v-btn.v-btn--has-bg {
     background-color: white;
+}
+
+.welcomeLogin {
+    text-align: center;
 }
 
 </style>

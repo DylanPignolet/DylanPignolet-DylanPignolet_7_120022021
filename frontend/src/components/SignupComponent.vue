@@ -8,7 +8,7 @@
         <v-row class="loginBody">
             <v-col cols="6" class="blocLogin">
                 <v-row class="welcome">
-                    <v-col cols="12">
+                    <v-col cols="12" class="welcomeText">
                         Bienvenue sur la page d'inscription du réseau Groupomania !
                     </v-col>
                 </v-row>
@@ -121,6 +121,7 @@ export default {
     margin: 40px 0;
     font-weight: bold;
     font-size: 1.5rem;
+    text-align: center;
 }
 
 #name, #firstName, #email, #password {
@@ -156,6 +157,14 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+@media screen and (max-width: 760px) {
+    .profileBlock {
+        display: flex;
+        flex-direction: column !important;
+        align-content: center;
+    }
 }
 
 </style>
