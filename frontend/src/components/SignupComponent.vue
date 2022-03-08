@@ -1,45 +1,63 @@
 <template>
-    <div>
+    <v-container fluid>
         <v-app>
             <v-app-bar flat max-height="65">
                 <Header />
             </v-app-bar>
         </v-app>
-        <div class="loginBody">
-            <div class="blocLogin">
-                <div class="welcome">
-                    Bienvenue sur la page d'inscription du réseau Groupomania !
-                </div>
+        <v-row class="loginBody">
+            <v-col cols="6" class="blocLogin">
+                <v-row class="welcome">
+                    <v-col cols="12">
+                        Bienvenue sur la page d'inscription du réseau Groupomania !
+                    </v-col>
+                </v-row>
                 <v-form @submit.prevent="signup" v-model="valid" class="form">
-                    <div>
-                        <v-text-field :rules='rules' label="Nom" dark clearable required v-model="name" id="name" placeholder="nom" type="text" class="form" />                                     
-                    </div>
-                    <div>
-                        <v-text-field :rules='rules' label="Prénom" dark clearable required v-model="firstName" id="firstName" placeholder="prénom" type="text" class="form" />                                
-                    </div>          
-                    <div>
-                        <v-text-field :rules='rules' label="email" dark clearable required v-model="email" id="email" placeholder="email" type="email" class="form" />                                       
-                    </div>    
-                    <div>
-                        <v-text-field :rules='rules' label="mot de passe" dark clearable required v-model="password" id="password" placeholder="mot de passe" type="password" class="form" />                                       
-                    </div>
-                    <div class="signBtn">
-                        <v-btn @click="signup" :disabled="!valid" dark elevation="3" color=white class="loginBtn">
-                            S'inscrire
-                        </v-btn>
-                        <div class="alreadySigned">
-                            Vous avez déjà un compte ?
-                        </div>
-                    </div>
+                    <v-row>
+                        <v-col cols="12">
+                            <v-text-field :rules='rules' label="Nom" dark clearable required v-model="name" id="name" placeholder="nom" type="text" class="form" />                                     
+                        </v-col>
+                    </v-row>
+                    <v-row>
+                        <v-col cols="12">
+                            <v-text-field :rules='rules' label="Prénom" dark clearable required v-model="firstName" id="firstName" placeholder="prénom" type="text" class="form" />                                
+                        </v-col>
+                    </v-row>          
+                    <v-row>
+                        <v-col cols="12">
+                            <v-text-field :rules='rules' label="email" dark clearable required v-model="email" id="email" placeholder="email" type="email" class="form" />                                       
+                        </v-col>
+                    </v-row>    
+                    <v-row>
+                        <v-col cols="12">
+                            <v-text-field :rules='rules' label="mot de passe" dark clearable required v-model="password" id="password" placeholder="mot de passe" type="password" class="form" />                                       
+                        </v-col>
+                    </v-row>
+                    <v-row class="signBtn">
+                        <v-row>
+                            <v-col cols="12">
+                                <v-btn @click="signup" :disabled="!valid" dark elevation="3" color=white class="loginBtn">
+                                    S'inscrire
+                                </v-btn>
+                            </v-col>
+                        </v-row>
+                        <v-row>
+                            <v-col cols="12" class="alreadySigned">
+                                Vous avez déjà un compte ?
+                            </v-col>
+                        </v-row>
+                    </v-row>
                 </v-form>
-                <div class="connectDiv">
-                    <router-link to="/" class="connect">
-                        Connectez-vous
-                    </router-link>  
-                </div>
-            </div>
-        </div>
-    </div>
+                <v-row>
+                    <v-col cols="12" class="connectDiv">
+                        <router-link to="/" class="connect">
+                            Connectez-vous
+                        </router-link>
+                    </v-col>  
+                </v-row>
+            </v-col>
+        </v-row>
+    </v-container>
 </template>
 
 <script>
@@ -89,6 +107,10 @@ export default {
 
 <style>
 
+.col-12 {
+    padding: 0 !important;
+}
+
 .form {
     display: flex;
     flex-direction: column;
@@ -119,6 +141,10 @@ export default {
 .alreadySigned {
     margin: 15px 0;
     color: #cac7c7
+}
+
+.connectDiv {
+    margin: 25px 0;
 }
 
 .connect {

@@ -1,39 +1,53 @@
 <template>
-<div>
-    <v-app>
-        <v-app-bar flat max-height="65">
-            <Header />
-        </v-app-bar>
-    </v-app>
-    <div class="loginBody">
-        <div class="blocLogin">
-            <div class="welcomeLogin">
-                Bienvenue sur la page de connexion du réseau Groupomania.
-            </div>
-            <v-form @submit.prevent="login" v-model="valid" class="form">
-                <div>
-                    <v-text-field :rules='rules' label="email" dark clearable required v-model.trim="user.email" id="email" placeholder="email" type="email" class="form" />                                       
-                </div>    
-                <div>
-                    <v-text-field :rules='rules' label="mot de passe" dark clearable required v-model.trim="user.password" id="password" placeholder="mot de passe" type="password" class="form" />                                       
-                </div>
-                <div class="logBtn">
-                    <v-btn @click="login" :disabled="!valid" dark elevation="3" color=white class="loginBtn">
-                            Se connecter
-                    </v-btn>
-                    <div class="notSigned">
-                        Vous avez déjà un compte ?
-                    </div>
-                </div>
-            </v-form>
-            <div class="connectDiv">
-                <router-link to="/signup" class="signup">
-                    Connectez-vous
-                </router-link>  
-            </div>
-        </div>
-    </div>
-</div>
+    <v-container fluid>
+        <v-app>
+            <v-app-bar flat max-height="65">
+                <Header />
+            </v-app-bar>
+        </v-app>
+        <v-row class="loginBody">
+            <v-col cols="6" class="blocLogin">
+                <v-row class="welcomeLogin">
+                    <v-col cols="12">
+                    Bienvenue sur la page de connexion du réseau Groupomania.
+                    </v-col>
+                </v-row>
+                <v-form @submit.prevent="login" v-model="valid" class="form">
+                    <v-row>
+                        <v-col cols="12">
+                            <v-text-field :rules='rules' label="email" dark clearable required v-model.trim="user.email" id="email" placeholder="email" type="email" class="form" />                                       
+                        </v-col>
+                    </v-row>    
+                    <v-row>
+                        <v-col cols="12">
+                            <v-text-field :rules='rules' label="mot de passe" dark clearable required v-model.trim="user.password" id="password" placeholder="mot de passe" type="password" class="form" />                                       
+                        </v-col>
+                    </v-row>
+                    <v-row class="logBtn">
+                        <v-row>
+                            <v-col cols="12">
+                                <v-btn @click="login" :disabled="!valid" dark elevation="3" color=white class="loginBtn">
+                                        Se connecter
+                                </v-btn>
+                            </v-col>
+                        </v-row>
+                        <v-row>
+                            <v-col cols="12" class="notSigned">
+                                Vous avez déjà un compte ?
+                            </v-col>
+                        </v-row>
+                    </v-row>
+                </v-form>
+                <v-row class="connectDiv">
+                    <v-col cols="12">
+                        <router-link to="/signup" class="signup">
+                            Connectez-vous
+                        </router-link>
+                    </v-col>  
+                </v-row>
+            </v-col>
+        </v-row>
+    </v-container>
 </template>
 
 <script>

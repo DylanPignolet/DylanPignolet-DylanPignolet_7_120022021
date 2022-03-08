@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv').config();
 
 const model = require('../models/User');
 
@@ -13,6 +14,8 @@ exports.signup = (req, res, next) => {
         firstname: req.body.firstname,
         email: req.body.email,
         password: hash,
+        imageUrl: '',
+        admin: 0
 });
       user.save()
             .then(() => {
@@ -92,6 +95,19 @@ exports.updateFirstName = (req,res,next) => {
 exports.updateEmail = (req,res,next) => {
   model.User.update({
       email: req.body.email,
+  },
+  {
+      where:{
+          id:req.params.id
+      }
+  })
+  .then(user => res.status(200).json(user))
+  .catch(error => res.status(400).json({error}))
+}
+
+exports.updatePhoto = (req,res,next) => {
+  model.User.update({
+      imageUrl: `${req.protocol}://${req.get("host")}/images/${req.file.filename}`
   },
   {
       where:{

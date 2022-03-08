@@ -3,7 +3,7 @@
         <v-toolbar color=#091F43 flat>
             <router-link to="/" class="home">
                 <v-app-bar-nav-icon id="logo">      
-                    <img src="@/assets/icon-left-font-monochrome-white.png" height="250px">
+                    <img src="@/assets/icon-left-font-monochrome-white.png" height="50px" width="250px">
                 </v-app-bar-nav-icon>
             </router-link>
         <v-toolbar-title class="title">d</v-toolbar-title>
@@ -80,6 +80,11 @@ export default {
 img {
     margin-left: 200px;
     margin-top: -10px;
+    object-fit: cover;
+}
+
+.v-btn__content {
+    height: 50px;
 }
 
 .v-application--wrap {

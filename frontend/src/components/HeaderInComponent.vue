@@ -1,9 +1,9 @@
 <template>
     <v-container fluid>
         <v-toolbar color=#091F43 flat>
-            <router-link to="/" class="home">
+            <router-link to="/feed" class="home">
                 <v-app-bar-nav-icon id="logo">      
-                    <img src="@/assets/icon-left-font-monochrome-white.png" height="250px">
+                    <img src="@/assets/icon-left-font-monochrome-white.png" height="50px" width="250px">
                 </v-app-bar-nav-icon>
             </router-link>
         <v-toolbar-title class="title">d</v-toolbar-title>

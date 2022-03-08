@@ -32,7 +32,7 @@ export default {
 <style>
 
 .profilBody {
-    margin-top: 20px;
+    margin-top: 100px;
 }
 
 </style>

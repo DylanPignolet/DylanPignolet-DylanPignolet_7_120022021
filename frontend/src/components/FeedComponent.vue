@@ -1,23 +1,23 @@
 <template>
     <div>
-        <v-app>
-            <v-app-bar flat max-height="65">
-                <HeaderIn />
-            </v-app-bar>
-        </v-app>
-        <div class="feedBody">
-            Feed
+        <div>
+            <NewPost/>
+        </div>
+        <div>
+            <AllPosts/>
         </div>
     </div>
 </template>
 
 <script>
-import HeaderIn from "./HeaderInComponent.vue";
+import NewPost from "./NewPostComponent.vue";
+import AllPosts from "./AllPostsComponent.vue";
 
 export default {
     name: 'Feed',
     components: {
-        HeaderIn,
+        NewPost,
+        AllPosts,
     },
     data: () => ({        
     }),
