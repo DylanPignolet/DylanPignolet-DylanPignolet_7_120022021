@@ -1,11 +1,11 @@
 <template>
   <div class="feed">
-    <Feed/>
+    <Feed />
   </div>
 </template>
 
 <script>
-import Feed from '../components/FeedComponent.vue'
+import Feed from "../components/FeedComponent.vue";
 
 export default {
   name: "FeedView",
@@ -14,6 +14,6 @@ export default {
   },
   data: () => ({
     //
-  })
+  }),
 };
 </script>

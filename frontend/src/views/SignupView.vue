@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Signup from '../components/SignupComponent.vue'
+import Signup from "../components/SignupComponent.vue";
 export default {
   name: "SignupView",
   components: {
@@ -13,6 +13,6 @@ export default {
   },
   data: () => ({
     //
-  })
+  }),
 };
 </script>

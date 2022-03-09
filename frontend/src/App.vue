@@ -1,12 +1,12 @@
 <template>
   <div>
     <div>
-        <div>
-          <router-view/>
-        </div>
+      <div>
+        <router-view />
+      </div>
     </div>
     <v-footer>
-          <Footer/>
+      <Footer />
     </v-footer>
   </div>
 </template>
@@ -16,11 +16,11 @@ import Footer from "./components/FooterComponent.vue";
 export default {
   name: "App",
   components: {
-    Footer
+    Footer,
   },
   data: () => ({
     //
-  })
+  }),
 };
 </script>
 
@@ -59,11 +59,8 @@ footer {
 }
 
 @media screen and (max-width: 760px) {
-    footer {
-      height: 75px;
-    }
+  footer {
+    height: 75px;
+  }
 }
-
 </style>
-
-

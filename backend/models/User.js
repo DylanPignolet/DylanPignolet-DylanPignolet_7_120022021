@@ -1,81 +1,93 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const bcrypt = require('bcrypt');
-const dotenv = require('dotenv').config();
+const { Sequelize, DataTypes } = require("sequelize");
+const bcrypt = require("bcrypt");
+const dotenv = require("dotenv").config();
 
 const sequelize = new Sequelize("groupomania", "root", "33302764Aa8ec78db", {
-    dialect: "mysql",
-    host: "localhost"
+  dialect: "mysql",
+  host: "localhost",
 });
 try {
-    sequelize.authenticate();
-    console.log('Connecté à la base de données MySQL!');
-  } catch (error) {
-    console.error('Impossible de se connecter, erreur suivante :', error);
-  }
+  sequelize.authenticate();
+  console.log("Connecté à la base de données MySQL!");
+} catch (error) {
+  console.error("Impossible de se connecter, erreur suivante :", error);
+}
 
-const User = sequelize.define('user', {
-    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+const User = sequelize.define(
+  "user",
+  {
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     lastname: { type: DataTypes.STRING(100), allowNull: false },
     firstname: { type: DataTypes.STRING(100), allowNull: false },
     email: { type: DataTypes.STRING(255), allowNull: false, unique: true },
     password: { type: DataTypes.STRING(200), allowNull: false },
     imageUrl: { type: Sequelize.STRING(255) },
-    admin: { type: Sequelize.INTEGER, defaultValue: 0, allowNull: false }
-},
-{
-  timestamps: true, createdAt: 'created', updatedAt: false, underscored: true
-})
-User.sync().then(() => 
-{
-    bcrypt.hash(process.env.DB_PASSWORD, 10)
-    .then(hash => {
+    admin: { type: Sequelize.INTEGER, defaultValue: 0, allowNull: false },
+  },
+  {
+    timestamps: true,
+    createdAt: "created",
+    updatedAt: false,
+    underscored: true,
+  }
+);
+User.sync().then(() => {
+  bcrypt
+    .hash(process.env.DB_PASSWORD, 10)
+    .then((hash) => {
       User.findOrCreate({
         where: {
-          email:"admin@groupomania.com"
+          email: "admin@groupomania.com",
         },
-        defaults:{
+        defaults: {
           id: 1,
           lastname: "admin",
           firstname: "admin",
           email: process.env.DB_MAIL,
           password: hash,
           imageUrl: "",
-          admin: 1
-        }    
-      })
+          admin: 1,
+        },
+      });
     })
-    .catch(console.log('Erreur')) 
-})
-exports.User = User
+    .catch(console.log("Erreur"));
+});
+exports.User = User;
 
-const Post = sequelize.define('post', {
-  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-  text: { type: DataTypes.TEXT, allowNull: true },
-  imageUrl: { type: DataTypes.STRING(255) },
-  userId: { type: DataTypes.INTEGER, allowNull: false },
-  liked: { type: DataTypes.INTEGER(255), allowNull: true }
-},
-{ 
-  timestamps: true, underscored: true 
-})
-exports.Post = Post
+const Post = sequelize.define(
+  "post",
+  {
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    text: { type: DataTypes.TEXT, allowNull: true },
+    imageUrl: { type: DataTypes.STRING(255) },
+    userId: { type: DataTypes.INTEGER, allowNull: false },
+    liked: { type: DataTypes.INTEGER(255), allowNull: true },
+  },
+  {
+    timestamps: true,
+    underscored: true,
+  }
+);
+exports.Post = Post;
 
-const Comment = sequelize.define('comment', {
-  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-  content: { type: DataTypes.TEXT, allowNull: false },
-  userId: { type: DataTypes.INTEGER, allowNull: false },
-  postId: { type: DataTypes.INTEGER, allowNull: false }    
-},
-{ timestamps: true, underscored: true })
-exports.Comment = Comment
+const Comment = sequelize.define(
+  "comment",
+  {
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    content: { type: DataTypes.TEXT, allowNull: false },
+    userId: { type: DataTypes.INTEGER, allowNull: false },
+    postId: { type: DataTypes.INTEGER, allowNull: false },
+  },
+  { timestamps: true, underscored: true }
+);
+exports.Comment = Comment;
 
-User.hasMany(Post, {foreignKey: 'userId'})
+User.hasMany(Post, { foreignKey: "userId" });
 
-Post.belongsTo(User, {foreignKey: 'userId', as:'author'})
+Post.belongsTo(User, { foreignKey: "userId", as: "author" });
 
-User.hasMany(Comment, {foreignKey: 'userId'})
+User.hasMany(Comment, { foreignKey: "userId" });
 
-Comment.belongsTo(User, {foreignKey: 'userId', as:'author'})
+Comment.belongsTo(User, { foreignKey: "userId", as: "author" });
 
-sequelize.sync()
-
+sequelize.sync();

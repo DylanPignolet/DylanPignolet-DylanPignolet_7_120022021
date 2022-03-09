@@ -1,11 +1,11 @@
 <template>
   <div class="login">
-    <Login/>
+    <Login />
   </div>
 </template>
 
 <script>
-import Login from '../components/LoginComponent.vue'
+import Login from "../components/LoginComponent.vue";
 
 export default {
   name: "LoginView",
@@ -14,6 +14,6 @@ export default {
   },
   data: () => ({
     //
-  })
+  }),
 };
 </script>

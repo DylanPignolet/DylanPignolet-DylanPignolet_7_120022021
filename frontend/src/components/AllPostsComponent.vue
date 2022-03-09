@@ -7,7 +7,11 @@
             <v-row class="authorName">
               <v-col cols="2">
                 <img
-                  :src="post.author.imageUrl ?post.author.imageUrl : 'https://st.depositphotos.com/2101611/3925/v/600/depositphotos_39258143-stock-illustration-businessman-avatar-profile-picture.jpg'"
+                  :src="
+                    post.author.imageUrl
+                      ? post.author.imageUrl
+                      : 'https://st.depositphotos.com/2101611/3925/v/600/depositphotos_39258143-stock-illustration-businessman-avatar-profile-picture.jpg'
+                  "
                   class="authorPicture"
                 />
               </v-col>
@@ -37,7 +41,12 @@
             >
           </v-col>
           <v-col cols="2" class="likeBtn">
-            <v-btn @click="like(post.id)" :data-id="post.id" dark class="thumbBtn">
+            <v-btn
+              @click="like(post.id)"
+              :data-id="post.id"
+              dark
+              class="thumbBtn"
+            >
               <span :data-id="post.id">{{ post.liked }}</span>
               <v-icon :data-id="post.id" class="thumbIcon">mdi-thumb-up</v-icon>
             </v-btn>
@@ -145,7 +154,6 @@ export default {
             JSON.stringify(response.data)
           );
           this.posts = response.data;
-          console.log(this.posts);
         });
     },
     deletePost() {
@@ -155,7 +163,6 @@ export default {
           headers: { Authorization: "Bearer " + localStorage.getItem("token") },
         })
         .then((response) => {
-          console.log(response.data);
           window.location.reload();
         });
     },
@@ -169,14 +176,12 @@ export default {
             document.querySelector("span[data-id='" + id + "']").textContent
           ) + 1;
       } else {
-        console.log(this.liked);
         this.liked = 0;
         document.querySelector("span[data-id='" + id + "']").textContent =
           parseInt(
             document.querySelector("span[data-id='" + id + "']").textContent
           ) - 1;
       }
-      console.log(this.liked);
       axios
         .put(
           "auth/post/" + id + "/like",
@@ -251,7 +256,7 @@ export default {
 }
 
 .postText {
-    display: flex;
+  display: flex;
 }
 
 .postCenter {
@@ -282,7 +287,7 @@ export default {
 .border {
   border-bottom: solid 0.5px;
   display: flex;
-    justify-content: space-between;
+  justify-content: space-between;
 }
 
 .commentRow {
@@ -353,16 +358,16 @@ export default {
 }
 
 @media screen and (max-width: 1360px) {
-   .postImg {
-       width: 90%;
-       height: 25rem;
-   }
+  .postImg {
+    width: 90%;
+    height: 25rem;
+  }
 }
 
 @media screen and (max-width: 760px) {
-   .postImg {
-       width: 90%;
-       height: 20rem;
-   }
+  .postImg {
+    width: 90%;
+    height: 20rem;
+  }
 }
 </style>
