@@ -255,7 +255,7 @@ export default {
     },
     deleteComment() {
       let id = event.target.getAttribute("data-id");
-      let commentId =event.target.getAttribute("data-commentId")
+      let commentId = event.target.getAttribute("data-commentId");
       axios
         .delete("auth/post/" + id + "/comments/" + commentId, {
           headers: { Authorization: "Bearer " + localStorage.getItem("token") },

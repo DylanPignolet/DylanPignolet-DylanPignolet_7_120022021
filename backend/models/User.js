@@ -2,9 +2,9 @@ const { Sequelize, DataTypes } = require("sequelize");
 const bcrypt = require("bcrypt");
 const dotenv = require("dotenv").config();
 
-const sequelize = new Sequelize("groupomania", "root", "33302764Aa8ec78db", {
+const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_USER_PASSWORD, {
   dialect: "mysql",
-  host: "localhost",
+  host: process.env.HOST,
 });
 try {
   sequelize.authenticate();
