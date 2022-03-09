@@ -62,7 +62,7 @@
             </v-row>
             <v-row>
               <v-col cols="12" class="notSigned">
-                Vous avez déjà un compte ?
+                Vous n'avez pas de compte ?
               </v-col>
             </v-row>
           </v-row>
@@ -70,7 +70,7 @@
         <v-row class="connectDiv">
           <v-col cols="12">
             <router-link to="/signup" class="signup">
-              Connectez-vous
+              Inscrivez-vous
             </router-link>
           </v-col>
         </v-row>
