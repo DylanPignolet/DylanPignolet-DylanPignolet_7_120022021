@@ -98,6 +98,19 @@
                   {{ comment.content }}
                 </v-col>
               </v-row>
+              <v-row>
+                <v-col cols="2">
+                  <v-btn
+                    v-if="post.author.id == userId || admin == 1"
+                    @click="deleteComment"
+                    :data-commentId="comment.id"
+                    :data-id="post.id"
+                    class="deleteCommentBtn"
+                    title="deleteComment"
+                    >Supprimer</v-btn
+                  >
+                </v-col>
+              </v-row>
             </v-col>
           </v-row>
         </v-col>
@@ -163,7 +176,7 @@ export default {
           headers: { Authorization: "Bearer " + localStorage.getItem("token") },
         })
         .then((response) => {
-          console.log(response)
+          console.log(response);
           window.location.reload();
         });
     },
@@ -233,13 +246,24 @@ export default {
     showComments(postId) {
       let visibility = document.getElementById("comment-" + postId).style
         .display;
-      console.log(visibility);
       if (visibility == "none") {
         this.getComments(postId);
         document.getElementById("comment-" + postId).style.display = "flex";
       } else {
         document.getElementById("comment-" + postId).style.display = "none";
       }
+    },
+    deleteComment() {
+      let id = event.target.getAttribute("data-id");
+      let commentId =event.target.getAttribute("data-commentId")
+      axios
+        .delete("auth/post/" + id + "/comments/" + commentId, {
+          headers: { Authorization: "Bearer " + localStorage.getItem("token") },
+        })
+        .then((response) => {
+          console.log(response);
+          window.location.reload();
+        });
     },
   },
   beforeMount() {
@@ -363,6 +387,11 @@ export default {
     width: 90%;
     height: 25rem;
   }
+}
+
+.deleteCommentBtn {
+  background-color: white;
+  color: #091f43;
 }
 
 @media screen and (max-width: 760px) {
